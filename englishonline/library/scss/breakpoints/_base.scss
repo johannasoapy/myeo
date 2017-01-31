@@ -1,0 +1,1432 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Base Mobile Stylesheet
+
+Be light and don't over style since everything here will be
+loaded by mobile devices. You want to keep it as minimal as
+possible. This is called at the top of the main stylsheet
+and will be used across all viewports.
+
+******************************************************************/
+
+/*********************
+GENERAL STYLES
+*********************/
+
+body {
+	font-family: $lato;
+	font-size: 16px;
+	line-height: 1.5;
+	color: $text-color;
+	background-color: $white;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+.clear {
+    clear: both;
+}
+iframe {
+    border: 1px solid $gray;
+    max-width: 100% !important;
+}
+* + iframe {
+	margin: 1em 0;
+}
+hr {
+    border-left: 0 none;
+    border-right: 0 none;
+    border-top: 1px solid $border-color;
+    border-bottom: 0 none;
+    margin: 2em 0;
+	clear: both;
+}
+img {
+    max-width: 100%;
+	height: auto;
+}
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute;
+}
+.screen-reader-text:focus, a:focus > .screen-reader-text {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px;
+	clip: auto;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	height: auto;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	position: absolute;
+	text-decoration: none;
+	text-transform: none;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
+}
+.screen-reader-text:focus {
+    top: 5px;
+}
+a:focus > .screen-reader-text {
+    bottom: 100%;
+}
+.excerpt-read-more {
+    position: relative;
+    .screen-reader-text {
+        min-width: 240px;
+    }
+}
+p.has-reader-link {
+    position: relative;
+    overflow: visible !important;
+    .screen-reader-text:focus {
+        bottom: 100%;
+        top: auto;
+    }
+}
+/********************
+WORDPRESS BODY CLASSES
+style a page via class
+********************/
+.rtl {}                           /* for sites that are read right to left (i.e. hebrew) */
+.home {
+    #content {margin-top: 0;}
+    main {
+        padding: 0;
+    }
+    .hero {
+        background-color: $gray;
+        background-image: url("../images/hero-canada-bg.jpg");
+        background-size: 100%;
+        background-size: cover;
+        .wrap {
+        }
+        overflow: hidden;
+        h1 {
+            font-style: italic;
+            margin: 1em 0;
+        }
+    }
+    .cta {
+        margin: 1em 0;
+        overflow: hidden;
+        padding: 1em;
+        background: $light-gray;
+        background: rgba(255,255,255,0.6);
+        .blue-btn {
+            margin: 1em 0;
+            padding: 14px 18px;
+            line-height: 1.1em;
+            font-size: 15px;
+        }
+        img {
+            padding: 8px;
+            background: $white;
+        }
+    }
+    .lightgray {
+        background: $light-gray;
+        overflow: hidden;
+        border-bottom: 1px solid $gray;
+        border-top: 1px solid $gray;
+    }
+    .stats {
+        text-align: center;
+        margin: 0;
+        h2 {
+            margin: 0 0 1em 0;
+            text-align: left;
+        }
+        p {
+            border-radius: 50%;
+            border: 2px solid $border-color;
+            overflow: hidden;
+            padding: 1em 1em 2em 1em;
+            width: 90%;
+            max-width: 340px;
+            margin: 0.5em auto;
+            height: auto;
+            background: $light-gray;
+            &:hover, &:focus {
+                border: 2px solid darken($border-color, 10%);
+            }
+        }
+        .stat-number {
+            font-size: 3em;
+            //color: $theme-color;
+            line-height: 1em;
+        }
+        .stat-text {
+            line-height: 1.2em;
+            display: inline-block;
+        }
+        a {
+            text-decoration: none;
+        }
+    }
+    .mission {
+        overflow: hidden;
+        
+    }
+    .support-programs {
+        .t-1of3 {
+            background: $light-gray;
+            margin-bottom: 1em;
+            h3 {
+                padding: 0 20px;
+            }
+            .program-content {
+                padding: 0 20px 20px;
+                overflow: hidden;
+            }
+        }
+    }
+    .stats, .mission, .support-programs {
+        padding: 2em 0;
+    }
+    h2 {
+            letter-spacing: 1px;
+            word-spacing: 4px;
+            font-style: italic;
+        }
+}                          /* home page */
+.archive, .blog, .search {
+    .hentry {
+        border: 0 none;
+        background: $light-gray;
+    }
+}                       /* archive page */
+.post-type-archive-quotes {
+    .hentry {
+        footer {
+            text-align: right;
+            padding: 0 1.5em 2.5em;
+            border-top: 0 none;
+        }
+        blockquote {
+            margin-bottom: 0;
+        }
+    }
+}
+.category-newcomer-stories {
+    .hentry {
+        .h2 {
+            margin: 0;
+        }
+    }
+}
+.page-template-page-about {
+    .teammember {
+        border-top: 1px dotted $border-color;
+        padding: 1.5em 0;
+        h3, p {
+            overflow: visible;
+        }
+        p + p, h3 + p {
+            margin: 0.8em 0 0 0;
+        }
+        img {
+            margin-bottom: 0;
+        }
+        .t-1of3 {
+            line-height: 0;
+        }
+    }
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	width: 96%;
+	margin: 0 auto;
+}
+
+/*********************
+LINK STYLES
+*********************/
+
+a {
+    letter-spacing: 0.5px;
+    font-size: 1.03em;
+	color: $link-color;
+
+	/* on hover */
+	&:hover, &:focus {
+		color: $link-hover;
+	}
+	/* mobile tap color */
+	&:link {
+		/*
+		this highlights links on iPhones/iPads.
+		so it basically works like the :hover selector
+		for mobile devices.
+		*/
+		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
+	}
+}
+a:visited {
+    color: $link-color;
+    /* on hover */
+	&:hover, &:focus {
+		color: $link-hover;
+	}
+}
+
+/******************************************************************
+H1, H2, H3, H4, H5 STYLES
+******************************************************************/
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+	text-rendering: optimizelegibility;
+	font-weight: 500;
+	/*
+	if you're going to use webfonts, be sure to check your weights
+	http://css-tricks.com/watch-your-font-weight/
+	*/
+
+	/* removing text decoration from all headline links */
+	a {
+		text-decoration: none;
+	}
+}
+
+h1, .h1 {
+	font-size: 1.7em;
+	line-height: 1.1em;
+	margin: 0 0 0.67em 0;
+}
+
+h2, .h2, #tribe-events-pg-template .tribe-events-content h2 {
+	font-size: 1.55em;
+	line-height: 1.4em;
+	margin-bottom: 0.5em;
+}
+
+h3, .h3, #tribe-events-pg-template .tribe-events-content h3 {
+	font-size: 1.3em;
+	margin-bottom: 0.5em;
+	font-weight: 400;
+    color: $theme-color;
+	// color: mix($bones-pink,$meta-gray, 60%);
+}
+
+h4, .h4 {
+	font-size: 1.125em;
+	font-weight: 600;
+	margin: 0;
+	//color: $meta-gray;
+}
+
+h5, .h5 {
+	font-size: 0.846em;
+	line-height: 2.09em;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+.no-svg {
+    .svgimg {
+        display: none;
+    }
+    .no-svgimg {
+        display: block !important;
+    }
+}
+.svg {
+    .no-svgimg {
+        display: none;
+    }
+}
+/*********************
+HEADER STYLES
+*********************/
+
+.header {
+	background-color: $theme-color;
+    .search-box {
+        margin: 0 0 2em 0;
+        form {
+            width: 100%;
+        }
+    }
+    .project-links {
+        background: $black;
+        font-size: 0.85em;
+        padding: 4px 0 6px 0;
+        text-align: right;
+        width: 100%;
+        display: block;
+        a {
+            color: $tan;
+            text-decoration: none;
+            &:hover, &:focus {
+                color: lighten($accent-color, 20%);
+                text-decoration: underline;
+            }
+            &:after {
+                display: inline-block;
+                content:'w';
+                font-family: 'fontello';
+                font-size: 0.8em;
+                vertical-align: baseline;
+                padding: 0 12px 0 3px;
+            }
+        }
+        a:visited {
+            color: $tan;
+            &:hover, &:focus {
+                color: lighten($accent-color, 20%);
+            }
+        }
+    }
+}
+
+	#logo {
+		margin: 0;
+        background: $light-gray;
+        padding: 0.5em;
+        width: 100%;
+        h1 {
+            margin: 0;
+        }
+		a {
+			color: $theme-color;
+		}
+        img {
+            max-width: 280px;
+            width: 100%;
+            vertical-align: middle;
+            
+        }
+        p {
+            margin: 0;
+        }
+        .tagline {
+            display: block;
+            font-style: italic;
+            font-size: 0.87em;
+            color: $theme-color;
+            text-indent: 2px;
+        }
+	}
+.searchform {
+    margin: 1em 0;
+}
+    #s {
+        $a: 100%;
+        $b: 50px;
+    
+        width: 75%;
+        width: -moz-calc(#{$a} - #{$b});
+        width: -webkit-calc(#{$a} - #{$b});
+        width: -o-calc(#{$a} - #{$b});
+        width: calc(#{$a} - #{$b});
+        margin: 0;
+        float: left;
+        -ms-box-sizing: border-box;
+        -khtml-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    #searchsubmit {
+        float: left;
+        width: 44px;
+        height: 40px;
+        overflow: hidden;
+        padding: 0 0 0 0.4em;
+        letter-spacing: 1em;
+    }
+/*********************
+NAVIGATION STYLES
+*********************/
+
+/*
+all navs have a .nav class applied via
+the wp_menu function; this is so we can
+easily write one group of styles for
+the navs on the site so our css is cleaner
+and more scalable.
+*/
+
+.nav {
+	border-bottom: 0;
+	margin: 0;
+
+	li {
+
+		a {
+			display: block;
+			color: $white;
+			text-decoration: none;
+			padding: 0.75em;
+		}
+
+		/*
+		so you really have to rethink your dropdowns for mobile.
+		you don't want to have it expand too much because the
+		screen is so small. How you manage your menu should
+		depend on the project. Here's some great info on it:
+		http://www.alistapart.com/articles/organizing-mobile/
+		*/
+		ul.sub-menu,
+		ul.children {
+
+			li {
+
+				a {
+					padding-left: 30px;
+
+				}
+			}
+
+		}
+
+	} /* end .menu li */
+
+} /* end .nav */
+
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+
+#content {
+	margin-top: 1.5em;
+    overflow: hidden;
+}
+#inner-content {
+	position: relative;
+}
+#content .post-grid {
+	width:96%;
+	margin: 2%;
+	background: $light-gray;
+	padding: 1em;
+    box-shadow:  4px 4px 0 $border-color;
+	a {
+		
+	}
+	h4 {
+		color: $link-color;
+		line-height: 1.2em;
+		padding: 0.2em 0.5em;
+		background: $black;
+		a {
+			color: $tan;
+			&:visited {
+				color: $tan;
+			}
+		}
+	}
+	p {
+		margin: 0;
+		font-size: 0.9em;
+		line-height: 1.4em;
+		color: $text-color !important;
+	}
+	p + p {
+		margin-top: 0.5em;
+	}
+}
+.upcoming {
+	overflow: hidden;
+	margin: 0;
+    background: $white;
+	padding: 1em;
+}
+.user-identify {
+    font-size: 1.3em;
+}
+blockquote {
+    margin: 1em;
+    padding: 0 0 0 0.75em;
+    border-left: 3px solid $border-color;
+    font-style: italic;
+    color: lighten($text-color,10%);
+    font-size: 1.3em;
+
+    &:before {}
+}
+.article-header {
+    border-bottom: 1px solid $border-color;
+    padding: 1.5em;
+}
+		.hentry {
+			background-color: $white;
+			margin-bottom: 1.5em;
+            clear: both;
+
+			header {
+				border-bottom: 1px solid $border-color;
+				padding: 1.5em;
+			}
+
+			footer {
+				padding: 1.5em;
+				border-top: 1px solid $border-color;
+
+				p {
+					margin: 0;
+				}
+			}
+
+		} /* end .hentry */
+
+		.single-title,
+		.page-title,
+		.entry-title,
+        .archive-title {
+			margin: 0;
+		}
+
+		/* post meta */
+		.byline {
+			color: $meta-gray;
+			font-style: italic;
+			margin: 0;
+
+			time {}
+		}
+        .archive-content {
+            padding: 1.5em;
+        }
+		/* entry content */
+		.entry-content {
+			padding: 1.5em;
+
+			p {
+				margin: 0;
+				-moz-hyphens: manual;
+				-webkit-hyphens: manual;
+				-ms-hyphens: manual;
+			}
+
+			p + p, ol + p, ul + p, blockquote + p, h3, h4, h3 + p, h4 + p, p + div, div + p {
+				margin: 1.5em 0 0;
+                overflow: hidden;
+			}
+			li {
+				p + p, ol + p, ul + p, blockquote + p, h3, h4, h3 + p, h4 + p, p + div, div + p {
+                overflow: visible;
+			}
+			}
+			h2 + h3, h2 + h4, h3:first-child, h4:first-child {
+				margin: 0;
+			}
+			li h4, li h3 {
+				margin: 1em 0 0 !important;
+			}
+			li h4 + p, li h3 + p {
+				margin: 0.5em 0 0 !important;
+			}
+
+
+			ul, ol, table, dl {}
+
+			ul, ol {
+                padding: 0 0 0 2em;
+
+				li {}
+
+			}
+
+			ul {
+                list-style: disc;
+				li {}
+
+			}
+
+			ol {
+                list-style: decimal;               
+				li {}
+
+			}
+
+			table {
+				width: 100%;
+				border: 1px solid $gray;
+				margin-bottom: 1.5em;
+
+				caption {
+					margin: 0 0 7px;
+					font-size: 0.75em;
+					color: $meta-gray;
+					text-transform: uppercase;
+					letter-spacing: 1px;
+				}
+			}
+
+			tr {
+				border-bottom: 1px solid $gray;
+
+				&:nth-child(even) {
+					background-color: $light-gray;
+				}
+			}
+
+			td {
+				padding: 7px;
+				border-right: 1px solid $gray;
+
+				&:last-child {
+					border-right: 0;
+				}
+			}
+
+			th {
+				background-color: $light-gray;
+				border-bottom: 1px solid $gray;
+				border-right: 1px solid $gray;
+
+				&:last-child {
+					border-right: 0;
+				}
+			}
+
+			dd {
+				margin-left: 0;
+				font-size: 0.9em;
+				color: #787878;
+				margin-bottom: 1.5em;
+			}
+
+			img {
+				margin: 0 0 1.5em 0;
+				max-width: 100%;
+				height: auto;
+			}
+
+			/*
+			image alignment on a screen this size may be
+			a bit difficult. It's set to start aligning
+			and floating images at the next breakpoint,
+			but it's up to you. Feel free to change it up.
+			*/
+
+			.size-auto,
+			.size-full,
+			.size-large,
+			.size-medium,
+			.size-thumbnail {
+				max-width: 100%;
+				height: auto;
+			}
+
+			pre {
+				background: $black;
+				color: $light-gray;
+				font-size: 0.9em;
+				padding: 1.5em;
+				margin: 0 0 1.5em;
+			}
+            p + p, ol + p, ul + p, blockquote + p, h3, h4, h3 + p, h4 + p, p + div, div + p {
+				margin: 1.5em 0 0;
+                overflow: hidden;
+			}
+			li {
+				p + p, ol + p, ul + p, blockquote + p, h3, h4, h3 + p, h4 + p, p + div, div + p {
+                    overflow: visible;
+                }
+            }
+            li + li {
+                padding-top: 0.5em;
+            }
+
+		} /* end .entry-content */
+
+		.wp-caption {
+			max-width: 100%;
+			background: $gray;
+			padding: 5px;
+
+			/* images inside wp-caption */
+			img {
+				max-width: 100%;
+				margin-bottom: 0;
+				width: 100%;
+			}
+
+			p.wp-caption-text {
+				font-size: 0.85em;
+				margin: 4px 0 7px;
+				text-align: center;
+			}
+
+		} /* end .wp-caption */
+
+		/* image gallery styles */
+		.gallery {
+
+		} /* end .gallery */
+
+		/* gallery caption styles */
+		.gallery-caption {}
+
+        /* audio player and playlist styles - must use !important because default styles load after our stylesheet */
+        .wp-playlist-light, .wp-playlist-light .wp-playlist-playing {
+            color: $text-color !important;
+        }
+        .mejs-container {
+            background: transparent !important;
+            height: 50px !important;
+        }
+        .mejs-container .mejs-controls {
+            height: auto !important;
+            background: $text-color !important;
+        }
+        .mejs-container .mejs-controls div {
+            margin: 8px 0 10px !important;
+        }
+        #content .mejs-controls .mejs-button button {
+            background-color: $link-color;
+            border-radius: 0;
+            box-sizing: content-box;
+            border: 8px solid $link-color;
+            transition: none;
+            //width: 32px !important;
+            &:hover, &:focus {
+                background-color: $link-hover;
+                border: 8px solid $link-hover;
+            }
+        }
+        #content .mejs-controls .mejs-playpause-button {
+            width: 32px !important;
+            button {
+                top: 0;
+                left: 2px;
+                &:active {
+                    top: 1px;
+                }
+            }
+        }
+        #content .mejs-controls .mejs-volume-button {
+            width: 32px !important;
+            button {
+                top: -8px;
+                left: -6px;
+                &:active {
+                    top: -7px;
+                }
+            }
+        }
+        .mejs-container .mejs-controls .mejs-currenttime-container {
+            padding: 10px 6px 0 14px !important;
+            position: relative;
+            left: 6px;
+        }
+        .mejs-currenttime, .mejs-duration {
+            color: $white !important;
+        }
+        .mejs-container .mejs-controls .mejs-duration-container {
+            padding: 10px 14px 0 0 !important
+        }
+        .mejs-controls a.mejs-horizontal-volume-slider {
+            background: transparent !important;
+        }
+        .mejs-controls .mejs-time-rail .mejs-time-current {
+            background: $link-hover !important;
+        }
+        .mejs-horizontal-volume-slider {
+            margin-left: 4px;
+            min-width: 60px !important;
+        }
+        .wp-playlist {
+            padding: 10px 10px 0 !important;
+        }
+        .wp-playlist-item {
+            padding: 10px 0 10px 3px !important;
+        }
+        .wp-playlist-item-length {
+            top: 10px !important;
+        }
+
+	// the tag output
+	.tags {
+		margin: 0;
+	}
+
+/******************************************************************
+PAGE NAVI STYLES
+******************************************************************/
+
+.pagination,
+.wp-prev-next {
+	margin: 1.5em 0;
+}
+	.pagination{
+    text-align: center;
+
+    ul {
+      display: inline-block;
+      background-color: $white;
+      white-space: nowrap;
+      padding: 0;
+      clear: both;
+      border-radius: 3px;
+    }
+
+    li {
+      padding: 0;
+      margin: 0;
+      float: left;
+      display: inline;
+      overflow: hidden;
+      border-right: 1px solid $gray;
+    }
+
+    a, span {
+      margin: 0;
+      text-decoration: none;
+      padding: 0;
+      line-height: 1em;
+      font-size: 1em;
+      font-weight: normal;
+      padding: 0.75em;
+      min-width: 1em;
+      display: block;
+      color: $blue;
+
+      &:hover, &:focus {
+      	background-color: $blue;
+      	color: $white;
+      }
+    }
+
+    .current{
+    	cursor: default;
+    	color: $text-color;
+
+    	&:hover, &:focus {
+    		background-color: $white;
+    		color: $text-color;
+    	}
+    }
+
+  } /* end .bones_page_navi */
+
+	/* fallback previous & next links */
+	.wp-prev-next {
+
+		ul {}
+
+		.prev-link {
+			float: left;
+		}
+
+		.next-link {
+			float: right;
+		}
+
+	} /* end .wp-prev-next */
+
+/******************************************************************
+COMMENT STYLES
+******************************************************************/
+
+/* h3 comment title */
+#comments-title {
+	padding: 0.75em;
+	margin: 0;
+	border-top: 1px solid $light-gray;
+
+	/* number of comments span */
+	span {}
+
+}
+
+.comment-nav {
+}
+
+
+.commentlist {
+	margin: 0;
+	list-style-type: none;
+}
+
+.comment {
+	position: relative;
+	clear: both;
+	overflow: hidden;
+	padding: 1.5em;
+	border-bottom: 1px solid $light-gray;
+
+	.comment-author {
+		padding: 7px;
+		border: 0;
+	}
+
+	/* vcard */
+	.vcard {
+		margin-left: 50px;
+
+		cite.fn {
+			font-weight: 700;
+			font-style: normal;
+
+			a.url {}
+
+		}
+
+		time {
+			display: block;
+			font-size: 0.9em;
+			font-style: italic;
+
+			a {
+				color: $meta-gray;
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline;
+				}
+
+			}
+
+		}
+
+		.photo {}
+
+		.avatar {
+			position: absolute;
+			left: 16px;
+			border-radius: 50%;
+		}
+
+	} /* end .commentlist .vcard */
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	.children {
+		margin: 0;
+
+	} /* end children */
+
+
+	&[class*=depth-] {
+		margin-top: 1.1em;
+	}
+
+	&.depth-1 {
+		margin-left: 0;
+		margin-top: 0;
+	}
+
+	&:not(.depth-1) {
+		margin-top: 0;
+		margin-left: 7px;
+		padding: 7px;
+	}
+
+	/* general comment classes */
+	&.alt {}
+	&.odd {
+		background-color: $white;
+	}
+	&.even {
+		background: $light-gray;
+	}
+}
+
+
+
+
+	/* comment meta */
+	.comment-meta {
+
+		a {}
+
+	}
+
+	.commentmetadata {
+
+		a {}
+
+	}
+
+	/* comment content */
+	.comment_content {
+
+		p {
+			margin: 0.7335em 0 1.5em;
+			font-size: 1em;
+			line-height: 1.5em;
+		}
+
+	} /* end .commentlist .comment_content */
+
+	/* comment reply link */
+	.comment-reply-link {
+		@extend .blue-btn;
+		font-size: 0.9em;
+		float: right;
+
+		&:hover,
+		&:focus {
+		}
+
+	} /* end .commentlist .comment-reply-link */
+
+	/* edit comment link */
+	.comment-edit-link {
+		font-style: italic;
+		margin: 0 7px;
+		text-decoration: none;
+		font-size: 0.9em;
+	}
+
+
+
+/******************************************************************
+COMMENT FORM STYLES
+******************************************************************/
+
+.comment-respond {
+	@extend .cf;
+	padding: 1.5em;
+	border-top: 1px solid $light-gray;
+}
+
+	#reply-title {
+		margin: 0;
+	}
+
+	.logged-in-as {
+		color: $meta-gray;
+		font-style: italic;
+		margin: 0;
+
+		a {
+			color: $text-color;
+		}
+	}
+
+	.comment-form-comment {
+		margin: 1.5em 0 0.75em;
+	}
+
+	.form-allowed-tags {
+		padding: 1.5em;
+		background-color: $light-gray;
+		font-size: 0.9em;
+	}
+
+	/* comment submit button */
+	#submit {
+		@extend .blue-btn;
+		float: right;
+		font-size: 1em;
+	}
+
+	/* comment form title */
+	#comment-form-title {
+		margin: 0 0 1.1em;
+	}
+
+	/* cancel comment reply link */
+	#cancel-comment-reply {
+		a {}
+	}
+
+	/* logged in comments */
+	.comments-logged-in-as {}
+
+	/* allowed tags */
+	#allowed_tags {
+		margin: 1.5em 10px 0.7335em 0;
+	}
+
+	/* no comments */
+	.nocomments {
+		margin: 0 20px 1.1em;
+	}
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+
+.sidebar {
+}
+
+	.widgettitle {
+        border-bottom: 1px solid darken($border-color,5%);
+        margin-bottom: 0;
+        padding-bottom: 0.5em;
+    }
+
+	.widget {
+        padding: 1em;
+        background-color: $mid-gray;
+        margin: 2.2em 0;
+        & > ul, .menu {
+            margin: 0;
+            li {
+                position: relative;
+            }
+            a {
+                text-decoration: none;
+                padding: 0.7em;
+                display: block;
+                font-weight: 600;
+                line-height: 1.3;
+            }
+            .current-menu-item {
+                a {
+                    color: $link-hover;
+                }
+            }
+            li + li {
+                border-top: 1px dotted darken($border-color,5%);
+            }
+        }
+        ul.bullet, ol.numbered {
+            padding: 0 0 0 1.3em;
+        }
+        ol.numbered {
+            list-style: decimal;
+        }
+		ul.bullet {
+            list-style: disc;
+			li {
+
+				&:first-child {}
+
+				&:last-child {}
+
+				a {}
+
+				/* deep nesting */
+				ul {}
+
+			}
+
+		}
+        ul, ol {
+            li + li {
+            }
+        }
+
+	}
+
+	.no-widgets {
+		background-color: $white;
+		padding: 1.5em;
+		text-align: center;
+		margin-bottom: 1.5em;
+	}
+
+/*********************
+FOOTER STYLES
+*********************/
+
+.footer {
+	clear: both;
+	background-color: $black;
+	color: $tan;
+    font-size: 0.9em;
+    h4 {
+        font-weight: 400;
+        margin: 1em 0 0;
+    }
+    p {
+        margin-top: 0.5em;
+    }
+    a {
+        color: lighten($accent-color, 20%);
+        text-decoration: none;
+        &:hover, &:focus {
+            color: lighten($accent-color, 10%);
+            text-decoration: underline;
+        }
+    }
+    .footer-top {
+		.wrap {
+			padding-bottom: 0;
+		}
+        border-top: 12px solid $black;
+		background: white;
+		color: $text-color;
+		overflow: hidden;
+		.cic-brand {
+			text-align: center;
+			img {
+			}
+		}
+	}
+    #inner-footer {
+        padding: 1.5em 0 0 0;
+        .d-1of3 {
+            margin-bottom: 1.5em;
+        }
+        .t-1of2 {
+            margin-bottom: 1.5em;
+        }
+        
+    }
+    .copyright {
+        padding: 0.5em 0;
+        text-align: center;
+        border-top: 1px solid $border-color;
+        margin: 2em 0 0;
+    }
+}
+
+	/*
+	if you checked out the link above:
+	http://www.alistapart.com/articles/organizing-mobile/
+	you'll want to style the footer nav
+	a bit more in-depth. Remember to keep
+	it simple because you'll have to
+	override these styles for the desktop
+	view.
+	*/
+	.footer-links {
+
+		ul {
+
+			li {}
+
+		}
+
+	} /* end .footer-links */
+
+
+	
+
+.fontello {
+    font-family: 'fontello';
+}
+/* Lightweight Social Icons styling overwrites */
+.widget .lsi-social-icons {
+    padding: 1em 0 0 !important;
+}
+
+/* ADDTOANY Social Share styling overwrites */
+.addtoany_list {
+	display: inline-block !important;
+	margin: 0.5em 0;
+	white-space: nowrap;
+	.addtoany_no_icon {
+        font-size: 1.2em !important;
+        text-decoration: none;
+	}
+}
+.a2a_menu, .a2a_menu_find_container { border-radius: 0 !important; }
+#a2apage_dropdown, #a2apage_full {
+	a {
+		color: $blue !important;
+		&:hover, &:focus {
+			color: lighten($blue,15%) !important;
+		}
+	}
+}
+/* Popup windows from http://stackoverflow.com/questions/1328723/how-to-generate-a-simple-popup-using-jquery */
+.poptrigger, .close {
+	cursor: pointer;
+	padding: 0.5em 0.75em;
+	float: right;
+	display: block;
+	margin-top: 0.5em;
+}
+.poptrigger {
+    &:before {
+        font-family: "fontello";
+		padding: 0 8px;
+		display: block;
+		font-weight: 300;
+        content: 'h';
+        float: left;
+        border: 2px solid $link-color;
+        border-radius: 15px;
+        margin-right: 4px;
+        background: $alert-green;
+    }
+    &:hover, &:focus {
+        &:before { 
+            border: 2px solid $link-hover;
+            }
+    }
+}
+a.selected {
+  border: 1px solid $border-color;
+  
+  z-index:100;
+}
+
+.popup {
+  background-color:#FFFFFF;
+  border:1px solid $border-color;
+  cursor:default;
+  display:none;
+  position:absolute;
+  right: 5%;
+  text-align:left;
+  width:90%;
+  max-width: 600px;
+  min-width: 280px;
+  z-index:50;
+  padding: 25px 25px 20px;
+  margin-top: 2.5em;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  .close {
+	clear: both;
+	padding-bottom: 0;
+  }
+}
+label {
+  display: block;
+  margin-bottom: 3px;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+.popup  {
+	div + div {
+	border-top: 1px solid lighten($border-color,10%);
+      }
+}
+.hentry {
+    .accordion {
+        @include transition(all 0.4s ease-in-out);
+        border: 1px solid $border-color;
+        max-height: 2.7em;
+        padding: 0.5em;
+        &.open {
+            max-height: 1000px;
+        }
+    }
+    .accordion-toggle {
+        color: $link-color;
+        cursor: pointer;
+        &:hover, &:focus {
+            color: $link-hover;
+        }
+        &:after {
+            content: '+';
+            padding-left: 1em;
+        }
+        &.open {
+            &:after {
+                content: '-';
+            }
+        }
+    }
+    .accordion-box {
+        @include transition(all 0.4s ease-in-out);
+        overflow: hidden;
+        display: block;
+        max-height: 0;
+        margin-top: 0;
+        padding: 0 1em;
+        &.open {
+            max-height: 1000px;
+            padding: 1em;
+            
+        }
+    }
+}

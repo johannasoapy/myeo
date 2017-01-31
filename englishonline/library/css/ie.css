@@ -1,0 +1,620 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: IE Stylesheet
+
+So instead of using the respond.js file to add media query support
+to IE, we're going to use SASS to create an easily readable css file.
+Here, we import all the styles the standard stylesheet gets, only
+without the media queries. No need to worry about editing anything!
+
+******************************************************************/
+/******************************************************************
+IMPORTS & DEPENDENCIES
+Remember, all the BASE styles are called already since IE can
+read those. Below, we need to import only the stuff IE can't
+understand (what's inside the media queries). We also need to
+import the mixins file so SASS can understand the variables.
+******************************************************************/
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Variables
+
+Here is where we declare all our variables like colors, fonts,
+base values, and defaults. We want to make sure this file ONLY
+contains variables that way our files don't get all messy.
+No one likes a mess.
+
+******************************************************************/
+/*********************
+COLORS
+Need help w/ choosing your colors? Try this site out:
+http://0to255.com/
+*********************/
+/*
+Here's a great tutorial on how to
+use color variables properly:
+http://sachagreif.com/sass-color-variables/
+*/
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Typography
+
+Need to import a font or set of icons for your site? Drop them in
+here or just use this to establish your typographical grid. Or not.
+Do whatever you want to...GOSH!
+
+Helpful Articles:
+http://trentwalton.com/2012/06/19/fluid-type/
+http://ia.net/blog/responsive-typography-the-basics/
+http://alistapart.com/column/responsive-typography-is-a-physical-discipline
+
+******************************************************************/
+/*********************
+FONT FACE
+*********************/
+@import 'https://fonts.googleapis.com/css?family=Lato:300';
+@import 'https://fonts.googleapis.com/css?family=Lato:400';
+@import 'https://fonts.googleapis.com/css?family=Lato:400i';
+@import 'https://fonts.googleapis.com/css?family=Lato:700';
+@import 'https://fonts.googleapis.com/css?family=Lato:700i';
+@font-face {
+  font-family: 'fontello';
+  src: url("fonts/fontello/fontello.eot");
+  src: url("fonts/fontello/fontello.eot?#iefix") format("embedded-opentype"), url("fonts/fontello/fontello.woff") format("woff"), url("fonts/fontello/fontello.ttf") format("truetype"), url("fonts/fontello/fontello.svg#font-name") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*
+The following is based of Typebase:
+https://github.com/devinhunt/typebase.css
+I've edited it a bit, but it's a nice starting point.
+*/
+/*
+ i imported this one in the functions file so bones would look sweet.
+ don't forget to remove it for your site.
+*/
+/*
+some nice typographical defaults
+more here: http://www.newnet-soft.com/blog/csstypography
+*/
+p {
+  -ms-word-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  -webkit-hyphenate-before: 2;
+  -webkit-hyphenate-after: 3;
+  hyphenate-lines: 3;
+  -webkit-font-feature-settings: "liga", "dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
+}
+
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Mixins Stylesheet
+
+This is where you can take advantage of Sass' great features: Mixins.
+I won't go in-depth on how they work exactly,
+there are a few articles below that will help do that. What I will
+tell you is that this will help speed up simple changes like
+changing a color or adding CSS3 techniques gradients.
+
+A WORD OF WARNING: It's very easy to overdo it here. Be careful and
+remember less is more.
+
+Helpful:
+http://sachagreif.com/useful-sass-mixins/
+http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
+http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
+
+******************************************************************/
+/*********************
+TRANSITION
+*********************/
+/*
+I totally rewrote this to be cleaner and easier to use.
+You'll need to be using Sass 3.2+ for these to work.
+Thanks to @anthonyshort for the inspiration on these.
+USAGE: @include transition(all 0.2s ease-in-out);
+*/
+/*********************
+CSS3 GRADIENTS
+Be careful with these since they can
+really slow down your CSS. Don't overdo it.
+*********************/
+/* @include css-gradient(#dfdfdf,#f8f8f8); */
+/*********************
+BOX SIZING
+*********************/
+/* @include box-sizing(border-box); */
+/* NOTE: value of "padding-box" is only supported in Gecko. So
+probably best not to use it. I mean, were you going to anyway? */
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: IE Grid Styles
+
+Since the example grid is based on media queries, so rather than
+setup some js library that would make IE8 and below understand
+media queries, let's just add some styles that serves a fixed grid.
+
+Again, if you want to roll your own, just remove this junk and put
+whatever you use in here.
+
+******************************************************************/
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: 481px and Up Stylesheet
+
+This stylesheet is loaded for larger devices. It's set to
+481px because at 480px it would load on a landscaped iPhone.
+This isn't ideal because then you would be loading all those
+extra styles on that same mobile connection.
+
+A word of warning. This size COULD be a larger mobile device,
+so you still want to keep it pretty light and simply expand
+upon your base.scss styles.
+
+******************************************************************/
+/*
+IMPORTANT NOTE ABOUT SASS 3.3 & UP
+You can't use @extend within media queries
+anymore, so just be aware that if you drop
+them in here, they won't work.
+*/
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+/* entry content */
+.entry-content {
+  /* at this larger size, we can start to align images */
+}
+
+.entry-content .alignleft, .entry-content img.alignleft {
+  margin-right: 1.5em;
+  display: inline;
+  float: left;
+}
+
+.entry-content .alignright, .entry-content img.alignright {
+  margin-left: 1.5em;
+  display: inline;
+  float: right;
+}
+
+.entry-content .aligncenter, .entry-content img.aligncenter {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  clear: both;
+}
+
+/* end .entry-content */
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+/*********************
+GENERAL STYLES
+*********************/
+h1, .h1 {
+  font-size: 2em;
+}
+
+h2, .h2, #tribe-events-pg-template .tribe-events-content h2 {
+  font-size: 1.75em;
+}
+
+h3, .h3, #tribe-events-pg-template .tribe-events-content h3 {
+  font-size: 1.5em;
+}
+
+h4, .h4 {
+  font-size: 1.2em;
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+.wrap {
+  max-width: 1020px;
+  width: 96%;
+}
+
+#tribe-events-pg-template {
+  max-width: 1020px;
+  width: 100%;
+}
+
+.stack-group {
+  padding: 1em 2em 1em 0;
+}
+
+.t-all {
+  width: 100%;
+  padding-right: 0;
+}
+
+.t-1of2 {
+  width: 48.25%;
+}
+
+.t-1of3 {
+  width: 30.999%;
+}
+
+.t-2of3 {
+  width: 65.501%;
+}
+
+.t-1of4 {
+  width: 22.375%;
+}
+
+.t-3of4 {
+  width: 74.125%;
+}
+
+.t-1of5 {
+  width: 18.25%;
+}
+
+.t-2of5 {
+  width: 38.25%;
+}
+
+.t-3of5 {
+  width: 58.25%;
+}
+
+.t-4of5 {
+  width: 78.25%;
+}
+
+.last-col {
+  float: right;
+  margin-right: 0 !important;
+}
+
+.columns2 {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 3em;
+  -moz-column-gap: 3em;
+  column-gap: 3em;
+}
+
+/*********************
+HEADER STYLES
+*********************/
+.header .search-box {
+  margin: 2em 0;
+}
+
+.header .search-box form {
+  float: right;
+}
+
+.header #inner-header {
+  width: 100%;
+}
+
+.header .project-links {
+  float: right;
+}
+
+#logo {
+  float: left;
+  margin: 0 auto 0.5em;
+  padding: 1em;
+}
+
+#logo h1 {
+  float: left;
+}
+
+#logo .tagline {
+  float: right;
+  margin: 1.25em 0 0 0;
+  font-size: 1em;
+}
+
+/************
+NAVIGATION
+************/
+.main-menu {
+  text-align: center;
+  margin: 0.5em auto 0.2em auto;
+}
+
+.main-menu ul.nav-menu {
+  text-align: center;
+  display: inline-block;
+}
+
+.main-menu ul.nav-menu > li {
+  display: block;
+  float: left;
+  margin: 0;
+  background: transparent;
+  border-bottom: 0 none;
+  border-right: 1px solid #d75353;
+}
+
+.main-menu ul.nav-menu > li:first-child {
+  border-left: 1px solid #d75353;
+}
+
+.main-menu ul.nav-menu > li:hover, .main-menu ul.nav-menu > li:focus, .main-menu ul.nav-menu > li:active, .main-menu ul.nav-menu > li[aria-expanded="true"] {
+  background: #c82f2f;
+}
+
+.main-menu ul.nav-menu > li:after, .main-menu ul.nav-menu > li::after {
+  position: absolute;
+  top: 2.1em;
+  right: -moz-calc(50% - 0.3em);
+  right: -webkit-calc(50% - 0.3em);
+  right: calc(50% - 0.3em);
+}
+
+.main-menu ul.nav-menu > li.open:after, .main-menu ul.nav-menu > li.open::after {
+  content: '';
+}
+
+.main-menu ul.nav-menu > li > a {
+  padding: 1em 2em;
+}
+
+.main-menu ul {
+  margin: 0 auto;
+}
+
+.main-menu ul li {
+  float: left;
+  width: auto;
+}
+
+.main-menu ul li a {
+  padding: 1em 2em;
+}
+
+.main-menu ul li:hover, .main-menu ul li:focus, .main-menu ul li:active, .main-menu ul li[aria-expanded="true"] {
+  z-index: 1200;
+  background: #fdfdf9;
+}
+
+.main-menu ul li:hover .sub-menu.open, .main-menu ul li:focus .sub-menu.open, .main-menu ul li:active .sub-menu.open, .main-menu ul li[aria-expanded="true"] .sub-menu.open {
+  box-shadow: 0 10px 20px #3f3b3a;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.main-menu ul li:hover .sub-menu.open li a, .main-menu ul li:focus .sub-menu.open li a, .main-menu ul li:active .sub-menu.open li a, .main-menu ul li[aria-expanded="true"] .sub-menu.open li a {
+  background: #c82f2f;
+  border-top: 1px dotted #d75353;
+}
+
+.main-menu ul li:hover .sub-menu.open li a:hover, .main-menu ul li:hover .sub-menu.open li a:focus, .main-menu ul li:hover .sub-menu.open li a:active, .main-menu ul li:focus .sub-menu.open li a:hover, .main-menu ul li:focus .sub-menu.open li a:focus, .main-menu ul li:focus .sub-menu.open li a:active, .main-menu ul li:active .sub-menu.open li a:hover, .main-menu ul li:active .sub-menu.open li a:focus, .main-menu ul li:active .sub-menu.open li a:active, .main-menu ul li[aria-expanded="true"] .sub-menu.open li a:hover, .main-menu ul li[aria-expanded="true"] .sub-menu.open li a:focus, .main-menu ul li[aria-expanded="true"] .sub-menu.open li a:active {
+  background: #d34242;
+  background: #d4493d;
+}
+
+.main-menu ul li .sub-menu {
+  text-align: left;
+  position: absolute;
+  top: 100%;
+  width: 120%;
+  left: -1px;
+}
+
+.main-menu ul li .sub-menu.open {
+  max-height: 800px;
+  overflow: visible;
+  z-index: 900;
+}
+
+.main-menu ul li .sub-menu.open:hover, .main-menu ul li .sub-menu.open:focus {
+  z-index: 1000;
+  box-shadow: 0 10px 20px #3f3b3a;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.main-menu ul li .sub-menu li {
+  width: 100%;
+}
+
+.main-menu ul li .sub-menu li a {
+  color: #fdfdf9;
+  background: #9f2525;
+  border-top: 1px dotted #c82f2f;
+}
+
+/*********************
+CONTENT AREA
+*********************/
+.home .hero .wrap {
+  max-width: 1040px;
+  margin: 2em auto;
+}
+
+.home .hero h1 {
+  font-size: 2em;
+  margin: 0.5em 0 0.7em 0;
+}
+
+.home .cta {
+  padding: 2em;
+}
+
+.home .cta .blue-btn {
+  font-size: 18px;
+}
+
+.home h2 {
+  line-height: 1.2;
+  margin: 0 0 1em 0;
+}
+
+.home .stats p {
+  max-width: 260px;
+  min-width: 220px;
+  height: 130px;
+}
+
+.home .stats .stat-number {
+  font-size: 2.8em;
+}
+
+.home .mission blockquote {
+  margin: 0 2em;
+  padding: 0 0 0 2em;
+}
+
+.home .mission h2 {
+  margin: 0;
+}
+
+.home .stats, .home .mission, .home .support-programs {
+  padding: 3em 0;
+}
+
+.home .support-programs p {
+  margin: 0;
+}
+
+#content {
+  padding-bottom: 4em;
+}
+
+#content .post-grid {
+  width: 48%;
+  margin: 1%;
+  float: left;
+  height: 268px;
+}
+
+#content .post-grid h4 {
+  height: 2.8em;
+}
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+.widget .menu .current-menu-item:after {
+  border-bottom: 18px solid transparent;
+  border-left: 18px solid #f3eee9;
+  border-top: 18px solid transparent;
+  top: 15%;
+  content: "";
+  height: 0;
+  position: absolute;
+  right: -32px;
+  width: 0;
+}
+
+.widget ul li {
+  /* deep nesting */
+}
+
+.widget ul li ul {
+  margin-top: 0.75em;
+  padding-left: 1em;
+}
+
+.widget + .widget {
+  margin: 1em 0;
+}
+
+/* links widget */
+/* meta widget */
+/* pages widget */
+/* recent-posts widget */
+/* archives widget */
+/* tag-cloud widget */
+/* calendar widget */
+/* category widget */
+/* recent-comments widget */
+/* search widget */
+/* text widget */
+/*********************
+FOOTER STYLES
+*********************/
+/*
+you'll probably need to do quite a bit
+of overriding here if you styled them for
+mobile. Make sure to double check these!
+
+*/
+.footer #inner-footer .d-1of3 {
+  margin-bottom: 1.5em;
+}
+
+.footer #inner-footer .t-1of2.sites, .footer #inner-footer .m-all.sites {
+  margin-right: 0;
+  float: right;
+}
+
+.footer-links ul li {
+  float: left;
+  /*
+			be careful with the depth of your menus.
+			it's very rare to have multi-depth menus in
+			the footer.
+			*/
+}
+
+.footer-links ul li ul li {
+  float: none;
+}
+
+.footer-links ul li ul li ul li {
+  display: none;
+}
+
+/* end .footer-links */
+/*
+you can call the larger styles if you want, but there's really no need
+*/
+/******************************************************************
+ADDITIONAL IE FIXES
+These fixes are now ONLY seen by IE, so you don't have to worry
+about using prefixes, although it's best practice. For more info
+on using Modernizr classes, check out this link:
+http://www.modernizr.com/docs/
+******************************************************************/
+/*
+For example, you can use something like:
+
+.no-textshadow .class { ... }
+
+You can also target specific versions by using the classes applied to
+the html element. These can sometimes change, so take a look inside the
+header.php file to see what they are:
+
+*/
+.lt-ie9 body {
+  min-width: 800px;
+}

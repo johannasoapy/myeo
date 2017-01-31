@@ -1,0 +1,31 @@
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: Super Large Monitor Stylesheet
+
+You can add some advanced styles here if you like. This kicks in
+on larger screens.
+
+******************************************************************/
+
+.wrap, #tribe-events-pg-template, .header #inner-header {
+    width: 92%;
+}
+.main-menu {
+    ul.nav-menu {
+        & > li {
+              
+            & > a {
+                padding: 1em 2.5em;
+            }
+        }
+    }
+	ul {
+		li {
+            a {
+                padding: 1em 2.5em;
+            }		
+        }
+    }
+}
